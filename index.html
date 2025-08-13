@@ -3,63 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的目录</title>
-    <style>
-        body {
-            font-family: 'Microsoft YaHei', Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        h1 {
-            color: #333;
-            border-bottom: 2px solid #4CAF50;
-            padding-bottom: 10px;
-        }
-        .directory {
-            list-style-type: none;
-            padding: 0;
-        }
-        .directory li {
-            margin: 15px 0;
-            padding-left: 20px;
-            position: relative;
-        }
-        .directory li::before {
-            content: '•';
-            color: #4CAF50;
-            font-size: 1.5em;
-            position: absolute;
-            left: 0;
-            top: -5px;
-        }
-        .directory a {
-            color: #2196F3;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .directory a:hover {
-            color: #0b7dda;
-            text-decoration: underline;
-        }
-    </style>
+    <title>目录</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>目录</h1>
-    <ul class="directory">
-        <li>
-            AiroTab
-            <ul>
-                <li><a href="https://TheOninesixY.github.io/AiroTab">AiroTab</a></li>
-            </ul>
-        </li>
-        <li>
-            手机Root教程
-            <ul>
-                <li><a href="https://TheOninesixY.github.io/刷机/Root教程">手机Root教程</a></li>
-            </ul>
-        </li>
-    </ul>
+    <header>
+        <h1>目录</h1>
+    </header>
+    <br>
+    <nav>
+        <ul>
+            <li><a href="https://theoninesixy.github.io/AiroTab">试试AiroTab!</a></li>
+        </ul>
+    </nav>
+    <br>
+    <section>
+        <h2>刷机</h2>
+        <ul>
+            <li><a href="https://theoninesixy.github.io/Flashing/Root">Root教程</a></li>
+            <li><a href="https://theoninesixy.github.io/Flashing/FlashRecovery">刷入第三方Recovery教程(暂未发布)</a></li>
+            <li><a href="https://theoninesixy.github.io/Flashing/FlashRom">刷入Rom教程(暂未发布)</a></li>
+        </ul>
+        <h2>其他</h2>
+        <ul>
+            <li><a href="https://theoninesixy.github.io/Other/About">关于(暂无)</a></li>
+
+        </ul>
+    </section>
 </body>
 </html>
