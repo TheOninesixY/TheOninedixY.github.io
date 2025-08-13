@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const width = 4;
     let squares = [];
     let score = 0;
+    let previousState = null;
+    let previousScore = 0;
+    let canUndo = false;
 
     // 创建棋盘
     function createBoard() {
@@ -195,9 +198,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 保存当前状态
+    function saveState() {
+        previousState = squares.map(square => square.textContent);
+        previousScore = score;
+        canUndo = true;
+    }
+
+    // 撤回到上一步
+    function undo() {
+        if (!canUndo || !previousState) return;
+        
+        squares.forEach((square, index) => {
+            square.textContent = previousState[index];
+            square.className = 'cell';
+            if (square.textContent !== '') {
+                square.classList.add(`tile-${square.textContent}`);
+            }
+        });
+        
+        score = previousScore;
+        scoreDisplay.textContent = score;
+        canUndo = false;
+    }
+
     // 控制移动
     function control(e) {
-        if (e.keyCode === 39) {
+        if (e.keyCode === 82) { // R键
+            restartGame();
+        } else if (e.keyCode === 90) { // Z键
+            undo();
+        } else if (e.keyCode === 39) {
             keyRight();
         } else if (e.keyCode === 37) {
             keyLeft();
@@ -210,6 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 向右移动
     function keyRight() {
+        saveState();
         moveRight();
         mergeRight();
         moveRight();
@@ -218,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 向左移动
     function keyLeft() {
+        saveState();
         moveLeft();
         mergeLeft();
         moveLeft();
@@ -226,6 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 向下移动
     function keyDown() {
+        saveState();
         moveDown();
         mergeDown();
         moveDown();
@@ -234,6 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 向上移动
     function keyUp() {
+        saveState();
         moveUp();
         mergeUp();
         moveUp();
@@ -286,9 +321,12 @@ document.addEventListener('DOMContentLoaded', () => {
             square.className = 'cell';
         });
 
-        // 重置分数
+        // 重置分数和状态
         score = 0;
         scoreDisplay.textContent = score;
+        previousState = null;
+        previousScore = 0;
+        canUndo = false;
 
         // 隐藏游戏结束界面
         gameOverDisplay.style.display = 'none';
