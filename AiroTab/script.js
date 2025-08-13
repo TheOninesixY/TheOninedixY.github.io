@@ -195,8 +195,32 @@ document.getElementById('domestic-group-title').addEventListener('click', functi
     options.style.display = options.style.display === 'none' ? 'block' : 'none';
 });
 
-// 搜索函数
-function search() {
+// 切换标题/时间显示
+  function toggleTitleTime() {
+      const selectedStyle = document.querySelector('input[name="display-style"]:checked').value;
+      const showTime = selectedStyle === 'time';
+      localStorage.setItem('showTime', showTime);
+      updateTitleDisplay();
+  }
+
+  // 更新标题显示
+  function updateTitleDisplay() {
+      const pageTitle = document.getElementById('page-title');
+      if (!pageTitle) return;
+      
+      const showTime = localStorage.getItem('showTime') === 'true';
+      if (showTime) {
+          const now = new Date();
+          const hours = now.getHours().toString().padStart(2, '0');
+          const minutes = now.getMinutes().toString().padStart(2, '0');
+          pageTitle.textContent = `${hours}:${minutes}`;
+      } else {
+          pageTitle.textContent = 'AiroTab';
+      }
+  }
+
+  // 搜索函数
+  function search() {
     const query = document.getElementById('search-input').value.trim();
     if (query) {
         const engine = document.querySelector('input[name="search-engine"]:checked').value;
@@ -238,7 +262,27 @@ function search() {
 // 添加事件监听器
 document.addEventListener('DOMContentLoaded', function() {
     // 加载设置
-    loadSettings();
+      loadSettings();
+    
+    // 设置标题样式切换
+    const displayStyleRadios = document.querySelectorAll('input[name="display-style"]');
+    const savedShowTime = localStorage.getItem('showTime') === 'true';
+    document.getElementById(savedShowTime ? 'time-style' : 'title-style').checked = true;
+    displayStyleRadios.forEach(radio => {
+        radio.addEventListener('change', toggleTitleTime);
+    });
+    
+    // 初始更新标题显示
+    updateTitleDisplay();
+    
+    // 每分钟更新时间
+    setInterval(function() {
+        if (localStorage.getItem('showTime') === 'true') {
+            updateTitleDisplay();
+        }
+    }, 60000);
+
+
 
     // 设置面板切换
     document.getElementById('settings-icon').addEventListener('click', toggleSettingsPanel);
