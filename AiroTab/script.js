@@ -123,6 +123,8 @@ function applyThemeColor(colorName) {
     if (!colors) return;
 
     document.documentElement.style.setProperty('--primary-color', colors.primary);
+    // 更新RGB格式的主色调变量
+    document.documentElement.style.setProperty('--primary-color-rgb', hexToRgb(colors.primary));
     document.documentElement.style.setProperty('--primary-variant', colors.primaryVariant);
     document.documentElement.style.setProperty('--secondary-color', colors.secondary);
     document.documentElement.style.setProperty('--secondary-variant', colors.secondaryVariant);
