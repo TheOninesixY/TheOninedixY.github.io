@@ -24,9 +24,9 @@
     <p>
         推荐使用TWRP和OrangeFox，它们功能强大，操作简单。
         <br>
-        <a href="https://twrp.me/Devices/">点我下载TWRP</a>
+        <a href="https://twrp.me/Devices/">前往TWRP官网</a>
         <br>
-        <a href="https://orangefox.download/">点我下载OrangeFox</a>
+        <a href="https://orangefox.download/">前往OrangeFox官网</a>
         <br>
         下载后会得到一个zip文件，双击打开它，里面有一个recovery.img文件，复制到C:\platform-tools。
     </p>
@@ -34,13 +34,14 @@
     <p>
         1. 将手机关机，按住音量下键和电源键，直到出现fastboot界面。<br>
         2. 连接手机到电脑，打开命令提示符（管理员），输入以下命令并回车：<br>
-        <code>cd C:\platform-tools</code><br>
+        <code class="copy-code">cd C:\platform-tools<button class="copy-btn" onclick="copyCode(this)">复制</button></code><br>
         3. 输入以下命令并回车，检查设备连接：<br>
-        <code>fastboot devices</code><br>
+        <code class="copy-code">fastboot devices<button class="copy-btn" onclick="copyCode(this)">复制</button></code><br>
         如果显示出手机的序列号，说明连接成功。<br>
         4. 输入以下命令并回车，开始刷入Recovery：<br>
-        <code>fastboot flash recovery recovery.img</code><br>
+        <code class="copy-code">fastboot flash recovery recovery.img<button class="copy-btn" onclick="copyCode(this)">复制</button></code><br>
         等待刷入完成。
     </p>
 </body>
+<script src="script.js"></script>
 </html>
