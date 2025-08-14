@@ -1,14 +1,18 @@
 .container {
+    width: 100%;
     max-width: 500px;
     margin: 0 auto;
     text-align: center;
     font-family: Arial, sans-serif;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 h1 {
-    font-size: 48px;
+    font-size: 32px;
     color: #776e65;
-    margin-bottom: 10px;
+    margin: 10px 0;
+    user-select: none;
 }
 
 .score-container {
@@ -23,24 +27,78 @@ h1 {
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    gap: 10px;
     background-color: #bbada0;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 6px;
+    margin: 0 auto;
+    width: min(90vw, 400px);
+    box-sizing: border-box;
+    aspect-ratio: 1;
 }
 
 .cell {
-    width: 100px;
-    height: 100px;
+    width: 100%;
     background-color: #cdc1b4;
-    border-radius: 5px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 36px;
     font-weight: bold;
     color: #776e65;
+    user-select: none;
+    position: relative;
+    aspect-ratio: 1;
+    transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+.cell span {
+    position: absolute;
+    font-size: min(8vw, 36px);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.15s ease-in-out;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes merge {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.cell.new-tile {
+    animation: appear 0.2s ease-in-out;
+}
+
+.cell.merge {
+    animation: merge 0.2s ease-in-out;
+}
+
+.cell.moving {
+    z-index: 2;
 }
 
 .tile-2 {
@@ -94,6 +152,37 @@ h1 {
 .tile-2048 {
     background-color: #edc22e;
     color: white;
+}
+
+.instructions {
+    margin: 10px 0;
+    color: #776e65;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-only {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .score-container {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+    
+    .instructions {
+        font-size: 12px;
+        padding: 0 10px;
+    }
 }
 
 .game-over {

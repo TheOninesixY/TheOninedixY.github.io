@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2048 Game Alpha 003</title>
+    <title>2048 Game Alpha 004</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,6 +11,10 @@
         <h1>2048</h1>
         <div class="score-container">
             分数: <span id="score">0</span>
+        </div>
+        <div class="instructions">
+            <p class="desktop-only">使用方向键移动 ↑←↓→<br>按R重新开始，按Z撤回</p>
+            <p class="mobile-only">滑动屏幕移动方块<br>轻触两次重新开始</p>
         </div>
         <div class="grid"></div>
         <div id="gameOver" class="game-over">

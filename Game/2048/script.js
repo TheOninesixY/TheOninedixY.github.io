@@ -16,9 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < width * width; i++) {
             const square = document.createElement('div');
             square.classList.add('cell');
-            square.textContent = '';
+            const content = document.createElement('span');
+            content.textContent = '';
+            square.appendChild(content);
             grid.appendChild(square);
-            squares.push(square);
+            squares.push(content);
         }
         generateNewNumber();
         generateNewNumber();
@@ -28,8 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function generateNewNumber() {
         let randomNumber = Math.floor(Math.random() * squares.length);
         if (squares[randomNumber].textContent === '') {
-            squares[randomNumber].textContent = Math.random() > 0.5 ? '4' : '2';
-            squares[randomNumber].classList.add(`tile-${squares[randomNumber].textContent}`);
+            const newValue = Math.random() > 0.5 ? '4' : '2';
+            squares[randomNumber].textContent = newValue;
+            const cell = squares[randomNumber].parentElement;
+            cell.className = 'cell';
+            cell.classList.add(`tile-${newValue}`, 'new-tile');
+            setTimeout(() => {
+                cell.classList.remove('new-tile');
+            }, 200);
             checkForGameOver();
         } else {
             generateNewNumber();
@@ -130,70 +138,103 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 合并数字 - 向右
     function mergeRight() {
+        let merged = false;
         for (let i = 14; i >= 0; i--) {
             if (i % 4 === 3) continue;
 
             if (squares[i].textContent === squares[i + 1].textContent && squares[i].textContent !== '') {
                 let combinedTotal = parseInt(squares[i].textContent) + parseInt(squares[i + 1].textContent);
-                squares[i + 1].textContent = combinedTotal;
                 squares[i].textContent = '';
+                squares[i + 1].textContent = combinedTotal;
+                const cell = squares[i + 1].parentElement;
+                cell.classList.add('merge');
+                setTimeout(() => {
+                    cell.classList.remove('merge');
+                }, 200);
                 score += combinedTotal;
                 scoreDisplay.textContent = score;
+                merged = true;
             }
         }
         updateTileColors();
+        return merged;
     }
 
     // 合并数字 - 向左
     function mergeLeft() {
+        let merged = false;
         for (let i = 1; i < 16; i++) {
             if (i % 4 === 0) continue;
 
             if (squares[i].textContent === squares[i - 1].textContent && squares[i].textContent !== '') {
                 let combinedTotal = parseInt(squares[i].textContent) + parseInt(squares[i - 1].textContent);
-                squares[i - 1].textContent = combinedTotal;
                 squares[i].textContent = '';
+                squares[i - 1].textContent = combinedTotal;
+                const cell = squares[i - 1].parentElement;
+                cell.classList.add('merge');
+                setTimeout(() => {
+                    cell.classList.remove('merge');
+                }, 200);
                 score += combinedTotal;
                 scoreDisplay.textContent = score;
+                merged = true;
             }
         }
         updateTileColors();
+        return merged;
     }
 
     // 合并数字 - 向下
     function mergeDown() {
+        let merged = false;
         for (let i = 11; i >= 0; i--) {
             if (squares[i].textContent === squares[i + width].textContent && squares[i].textContent !== '') {
                 let combinedTotal = parseInt(squares[i].textContent) + parseInt(squares[i + width].textContent);
-                squares[i + width].textContent = combinedTotal;
                 squares[i].textContent = '';
+                squares[i + width].textContent = combinedTotal;
+                const cell = squares[i + width].parentElement;
+                cell.classList.add('merge');
+                setTimeout(() => {
+                    cell.classList.remove('merge');
+                }, 200);
                 score += combinedTotal;
                 scoreDisplay.textContent = score;
+                merged = true;
             }
         }
         updateTileColors();
+        return merged;
     }
 
     // 合并数字 - 向上
     function mergeUp() {
+        let merged = false;
         for (let i = 4; i < 16; i++) {
             if (squares[i].textContent === squares[i - width].textContent && squares[i].textContent !== '') {
                 let combinedTotal = parseInt(squares[i].textContent) + parseInt(squares[i - width].textContent);
-                squares[i - width].textContent = combinedTotal;
                 squares[i].textContent = '';
+                squares[i - width].textContent = combinedTotal;
+                const cell = squares[i - width].parentElement;
+                cell.classList.add('merge');
+                setTimeout(() => {
+                    cell.classList.remove('merge');
+                }, 200);
                 score += combinedTotal;
                 scoreDisplay.textContent = score;
+                merged = true;
             }
         }
         updateTileColors();
+        return merged;
     }
 
     // 更新方块颜色
     function updateTileColors() {
         squares.forEach(square => {
-            square.className = 'cell';
+            const cell = square.parentElement;
+            cell.className = 'cell';
             if (square.textContent !== '') {
-                square.classList.add(`tile-${square.textContent}`);
+                cell.classList.add(`tile-${square.textContent}`);
             }
         });
     }
@@ -239,40 +280,62 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    let isAnimating = false;
+
     // 向右移动
     function keyRight() {
+        if (isAnimating) return;
+        isAnimating = true;
         saveState();
         moveRight();
-        mergeRight();
+        const merged = mergeRight();
         moveRight();
-        generateNewNumber();
+        setTimeout(() => {
+            generateNewNumber();
+            isAnimating = false;
+        }, merged ? 200 : 100);
     }
 
     // 向左移动
     function keyLeft() {
+        if (isAnimating) return;
+        isAnimating = true;
         saveState();
         moveLeft();
-        mergeLeft();
+        const merged = mergeLeft();
         moveLeft();
-        generateNewNumber();
+        setTimeout(() => {
+            generateNewNumber();
+            isAnimating = false;
+        }, merged ? 200 : 100);
     }
 
     // 向下移动
     function keyDown() {
+        if (isAnimating) return;
+        isAnimating = true;
         saveState();
         moveDown();
-        mergeDown();
+        const merged = mergeDown();
         moveDown();
-        generateNewNumber();
+        setTimeout(() => {
+            generateNewNumber();
+            isAnimating = false;
+        }, merged ? 200 : 100);
     }
 
     // 向上移动
     function keyUp() {
+        if (isAnimating) return;
+        isAnimating = true;
         saveState();
         moveUp();
-        mergeUp();
+        const merged = mergeUp();
         moveUp();
-        generateNewNumber();
+        setTimeout(() => {
+            generateNewNumber();
+            isAnimating = false;
+        }, merged ? 200 : 100);
     }
 
     // 检查游戏是否结束
@@ -339,8 +402,67 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('keyup', control);
     }
 
+    // 触摸处理
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let lastTapTime = 0;
+    let hasMoved = false;
+    
+    function handleTouchStart(e) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        hasMoved = false;
+        
+        // 检测双击重新开始
+        const currentTime = new Date().getTime();
+        const tapLength = currentTime - lastTapTime;
+        if (tapLength < 300 && tapLength > 0 && !hasMoved) {
+            e.preventDefault();
+            restartGame();
+        }
+        lastTapTime = currentTime;
+    }
+    
+    function handleTouchMove(e) {
+        if (!touchStartX || !touchStartY) return;
+        
+        const touchEndX = e.touches[0].clientX;
+        const touchEndY = e.touches[0].clientY;
+        
+        const deltaX = touchEndX - touchStartX;
+        const deltaY = touchEndY - touchStartY;
+        
+        const minSwipeDistance = 30;
+        
+        if (Math.abs(deltaX) > minSwipeDistance || Math.abs(deltaY) > minSwipeDistance) {
+            e.preventDefault();
+            hasMoved = true;
+            
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                if (deltaX > 0) {
+                    keyRight();
+                } else {
+                    keyLeft();
+                }
+            } else {
+                if (deltaY > 0) {
+                    keyDown();
+                } else {
+                    keyUp();
+                }
+            }
+            
+            touchStartX = 0;
+            touchStartY = 0;
+        }
+    }
+    
     // 初始化游戏
     createBoard();
     document.addEventListener('keyup', control);
     restartButton.addEventListener('click', restartGame);
+    
+    // 添加触摸事件监听
+    document.addEventListener('touchstart', handleTouchStart, { passive: false });
+    document.addEventListener('touchmove', handleTouchMove, { passive: false });
 });
