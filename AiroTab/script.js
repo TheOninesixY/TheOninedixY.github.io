@@ -200,6 +200,10 @@ document.getElementById('domestic-group-title').addEventListener('click', functi
       const selectedStyle = document.querySelector('input[name="display-style"]:checked').value;
       const showTime = selectedStyle === 'time';
       localStorage.setItem('showTime', showTime);
+      
+      // 显示或隐藏时钟样式设置
+      document.getElementById('clock-style-settings').style.display = showTime ? 'block' : 'none';
+      
       updateTitleDisplay();
   }
 
@@ -211,9 +215,18 @@ document.getElementById('domestic-group-title').addEventListener('click', functi
       const showTime = localStorage.getItem('showTime') === 'true';
       if (showTime) {
           const now = new Date();
-          const hours = now.getHours().toString().padStart(2, '0');
+          const clockStyle = localStorage.getItem('clockStyle') || '24h';
+          
+          let hours = now.getHours();
+          
+          if (clockStyle === '12h') {
+              hours = hours % 12 || 12; // 将0转换为12
+          }
+          
+          const hoursStr = hours.toString().padStart(2, '0');
           const minutes = now.getMinutes().toString().padStart(2, '0');
-          pageTitle.textContent = `${hours}:${minutes}`;
+          
+          pageTitle.textContent = `${hoursStr}:${minutes}`;
       } else {
           pageTitle.textContent = 'AiroTab';
       }
@@ -271,6 +284,22 @@ document.addEventListener('DOMContentLoaded', function() {
     displayStyleRadios.forEach(radio => {
         radio.addEventListener('change', toggleTitleTime);
     });
+    
+    // 设置时钟样式切换
+    const clockStyleRadios = document.querySelectorAll('input[name="clock-style"]');
+    const savedClockStyle = localStorage.getItem('clockStyle') || '24h';
+    document.getElementById(`${savedClockStyle}-style`).checked = true;
+    clockStyleRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            localStorage.setItem('clockStyle', this.value);
+            if (localStorage.getItem('showTime') === 'true') {
+                updateTitleDisplay();
+            }
+        });
+    });
+    
+    // 初始显示或隐藏时钟样式设置
+    document.getElementById('clock-style-settings').style.display = savedShowTime ? 'block' : 'none';
     
     // 初始更新标题显示
     updateTitleDisplay();
