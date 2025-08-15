@@ -24,7 +24,7 @@
         // 获取上次重定向时间
         const lastRedirectTime = localStorage.getItem(redirectKey);
 
-        // 检查是否在2秒内返回
+        // 检查是否在1秒内返回
         if (lastRedirectTime && (now - parseInt(lastRedirectTime)) < 1000) {
             console.log('1秒内返回中国版，放弃重定向');
             // 清除记录，避免影响下次访问
