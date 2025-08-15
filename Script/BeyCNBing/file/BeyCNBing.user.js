@@ -1,13 +1,12 @@
 // ==UserScript==
 // @name         BeyCNBing
-// @namespace    https://www.theoninesixy.github.io/BeyCNBing
-
-// @version      1.0
-// @updateURL    https://www.theoninesixy.github.io/BeyCNBing/file/BeyCNBing.js
-// @downloadURL  https://www.theoninesixy.github.io/BeyCNBing/file/BeyCNBing.js
-// @description  有时即使开着梯子，访问必应也会被重定向到中国版，这个脚本能完美解决这个问题。
-// @icon         https://www.theoninesixy.github.io/BeyCNBing/file/bing-color.svg
+// @namespace    https://theoninesixy.github.io/Script/BeyCNBing
 // @author       OninesixY
+// @version      1.0
+// @updateURL    https://theoninesixy.github.io/Script/BeyCNBing/file/BeyCNBing.user.js
+// @downloadURL  https://theoninesixy.github.io/Script/BeyCNBing/file/BeyCNBing.user.js
+// @description  有时即使开着梯子，访问必应也会被重定向到中国版，这个脚本可以完美解决这个问题。
+// @icon         https://theoninesixy.github.io/Script/BeyCNBing/file/bing-color.svg
 // @match        *://cn.bing.com/*
 // @grant        none
 // ==/UserScript==
