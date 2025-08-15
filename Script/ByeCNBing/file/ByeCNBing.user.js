@@ -2,7 +2,7 @@
 // @name         ByeCNBing
 // @namespace    https://theoninesixy.github.io/Script/ByeCNBing
 // @author       OninesixY
-// @version      2.1
+// @version      2.1.1
 // @updateURL    https://theoninesixy.github.io/Script/ByeCNBing/file/ByeCNBing.user.js
 // @downloadURL  https://theoninesixy.github.io/Script/ByeCNBing/file/ByeCNBing.user.js
 // @description  必应强制国际版
