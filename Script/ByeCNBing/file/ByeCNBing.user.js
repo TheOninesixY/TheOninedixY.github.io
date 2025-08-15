@@ -6,7 +6,7 @@
 // @updateURL    https://theoninesixy.github.io/Script/ByeCNBing/file/ByeCNBing.user.js
 // @downloadURL  https://theoninesixy.github.io/Script/ByeCNBing/file/ByeCNBing.user.js
 // @description  有时即使开着梯子，访问必应也会被重定向到中国版，这个脚本可以完美解决这个问题。
-// @icon         https://theoninesixy.github.io/Script/ByeCNBing/file/bing-color.svg
+// @icon         https://theoninesixy.github.io/Script/ByeCNBing/file/icon.svg
 // @match        *://cn.bing.com/*
 // @grant        none
 // ==/UserScript==
