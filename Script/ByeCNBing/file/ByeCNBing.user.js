@@ -9,7 +9,7 @@
 // @icon         https://theoninesixy.github.io/Script/ByeCNBing/file/icon.svg
 // @match        *://cn.bing.com/*
 // @grant        none
-// @license      GPL-3.0
+// @license      MIT
 
 // ==/UserScript==
 
