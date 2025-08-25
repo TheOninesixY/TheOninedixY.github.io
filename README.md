@@ -1,11 +1,11 @@
 # TheOninesixY.github.io
 ## 我自己都不知道这个网站有什么用qwq
-### [尝试AiroTab！](theoninesixy.github.io/AiroTab)
+### [尝试AiroTab！](https://theoninesixy.github.io/AiroTab)
 ### 刷机
-- [Root](theoninesixy.github.io/Flashing/Root)
-- [刷入Recovery](theoninesixy.github.io/Flashing/FlashRecovery)
+- [Root](https://theoninesixy.github.io/Flashing/Root)
+- [刷入Recovery](https://theoninesixy.github.io/Flashing/FlashRecovery)
 ### 难玩的用AI生成的游戏
-- [俄罗斯方块](theoninesixy.github.io/Game/Tetris)
-- [2048](theoninesixy.github.io/Game/2048)
+- [俄罗斯方块](https://theoninesixy.github.io/Game/Tetris)
+- [2048](https://theoninesixy.github.io/Game/2048)
 ### 脚本
-- [ByeCNBing](theoninesixy.github.io/Script/ByeCNBing)
+- [ByeCNBing](https://theoninesixy.github.io/Script/ByeCNBing)
