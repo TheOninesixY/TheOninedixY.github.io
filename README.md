@@ -21,4 +21,4 @@
 ### **温馨提示**
 
 - 大部分代码都是用AI写的，质量完全无法保证，如遇到问题，我也只能让AI帮忙解决。
-- 部分网站更新了，如果你觉得新版不习惯，可在网址后缀添加/old，就像这样：[theoninesixy.github.io](https://theoninesixy.github.io/old)
+- 部分网站更新了，如果你觉得新版不习惯，可在网址后缀添加/old，就像这样：[theoninesixy.github.io/old](https://theoninesixy.github.io/old)
