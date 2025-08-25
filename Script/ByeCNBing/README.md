@@ -1,4 +1,4 @@
-# ByeCNBing
+# ![icon](file/icon.svg) ByeCNBing
 
 ## 必应强制国际版
 
