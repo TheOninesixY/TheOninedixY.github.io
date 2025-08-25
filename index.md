@@ -2,21 +2,21 @@
 
 # TheOninesixY.github.io
 
-## [*尝试AiroTab！*](AiroTab)
+## [*尝试AiroTab！*](AiroTab/index.html)
 
 ### **刷机**
 
-- [Root](Flashing/Root)
-- [刷入Recovery](Flashing/FlashRecovery)
+- [Root](Flashing/Root/index.md)
+- [刷入Recovery](Flashing/FlashRecovery/index.md)
 
 ### **难玩的用AI生成的游戏**
 
-- [俄罗斯方块](Game/Tetris)
-- [2048](Game/2048)
+- [俄罗斯方块](Game/Tetris/index.html)
+- [2048](Game/2048/index.html)
 
 ### **脚本**
 
-- [ByeCNBing](Script/ByeCNBing)
+- [ByeCNBing](Script/ByeCNBing/index.md)
 
 ### **温馨提示**
 
