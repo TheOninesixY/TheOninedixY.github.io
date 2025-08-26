@@ -11,4 +11,4 @@
 
 ### 如何体验
 
-访问[TheOninesixY.github.io](index.md)
+访问[TheOninesixY.github.io](https://TheOninesixY.github.io)
