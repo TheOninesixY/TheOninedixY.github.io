@@ -18,6 +18,13 @@
 
 - [ByeCNBing](Script/ByeCNBing/index.md)
 
+### **音乐推荐**
+
+加粗的歌曲带MV
+
+- [**勾指起誓**](./GoodMusic/勾指起誓.mp4)
+- [Liar Dancer](./GoodMusic/Liar%20Dancer.mp3)
+
 ### **温馨提示**
 
 - 大部分代码都是用AI写的，质量完全无法保证，如遇到问题，我也只能让AI帮忙解决。
